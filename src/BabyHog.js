@@ -12,6 +12,11 @@ export default class BabyHog extends Component {
 
   constructor(props) {
     super(props)
+    this.state = {
+      name: this.props.data.name,
+      weight: this.props.weight,
+      hobby: this.props.data.hobby
+    }
   }
 
   changeWeight = (e) => {
@@ -25,15 +30,15 @@ export default class BabyHog extends Component {
   render() {
     return (
       <li className="hogbabies">
-        <h1>Name</h1>
-        <h3>Weight:</h3>
-        <h3>Hobby:</h3>
-        <h4>Eye Color:</h4>
+        <h1>{this.state.name}</h1>
+        <h3>Weight:{this.state.weight}</h3>
+        <h3>Hobby: {this.state.hobby}</h3>
+        <h4>Eye Color:{this.props.eyeColor}</h4>
           
-        <Button name="+">
+        <Button onClick={this.changeWeight} name="+">
           Increase Weight
         </Button>
-        <Button name="-">
+        <Button onClick={this.changeWeight} name="-">
           Decrease Weight
         </Button>
 
@@ -44,4 +49,8 @@ export default class BabyHog extends Component {
       </li>
     )
   }
+}
+
+BabyHog.defaultProps = {
+  weight: 10
 }
