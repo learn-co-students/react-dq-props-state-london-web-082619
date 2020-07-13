@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 import Master from './assets/master-hog.png'
 import BabyHog from './BabyHog'
-// import offspring from './db.js'
+import Iamjusttestingthis from './db.js'
 
-export default class MasterHog extends Component {
 
-  constructor() {
-    super()
-    this.state = {
+console.log(Iamjusttestingthis)
+
+class MasterHog extends Component {
+
+  state = {
       eyeColor: "blue",
+      Iamjusttestingthis: Iamjusttestingthis
     }
-  }
+  
 
 
   changeEyeColor = (e) => {
@@ -18,9 +20,15 @@ export default class MasterHog extends Component {
       eyeColor: e.target.value
     })
   }
+ 
+  passEachBabyAttributes = () => (
+    this.state.Iamjusttestingthis.map(baby => <BabyHog {...baby} eyeColor={this.state.eyeColor} key={baby.id}/>)
+  )
+    
 
-
-  render() {
+    render() {
+    console.log(this.state)
+    console.log(this.props)
     return (
       <div>
 
@@ -40,9 +48,7 @@ export default class MasterHog extends Component {
         </div>
         
         <ul className="hoglist">
-          <BabyHog />
-          <BabyHog />
-          <BabyHog />
+          {this.passEachBabyAttributes()}
         </ul>
 
       </div>
@@ -50,3 +56,5 @@ export default class MasterHog extends Component {
   }
 
 }
+
+export default MasterHog
